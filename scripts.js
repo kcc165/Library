@@ -1,10 +1,10 @@
 
 class Book {
     constructor (title, author, pages, hasRead){
-        this._title = title;
-        this._author = author;
-        this._pages = pages;
-        this._hasRead = hasRead;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.hasRead = hasRead;
     }
 
     getInfo () {
@@ -15,6 +15,8 @@ class Book {
 }
 
 let myLibrary = [];
+myLibrary.push(new Book("Harry Potter", "J.K. Rowling", 300, false));
+console.log(myLibrary);
 
 function addBookToLibrary(){
     let title = prompt("What is the title? ")
@@ -23,5 +25,4 @@ function addBookToLibrary(){
     myLibrary.push(new Book(title, author, pages, false));
 }
 
-addBookToLibrary();
-console.log(myLibrary);
+
