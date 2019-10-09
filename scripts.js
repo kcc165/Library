@@ -14,7 +14,7 @@ class Book {
 
 }
 
-let myLibrary = [];
+const myLibrary = [];
 myLibrary.push(new Book("Harry Potter", "J.K. Rowling", 300, false));
 console.log(myLibrary);
 
