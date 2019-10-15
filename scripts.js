@@ -15,7 +15,9 @@ class Book {
 }
 
 const myLibrary = [];
-myLibrary.push(new Book("Harry Potter", "J.K. Rowling", 300, false));
+const table = document.querySelector(".book-table");
+
+addBookToLibrary();
 console.log(myLibrary);
 
 function addBookToLibrary(){
@@ -23,6 +25,8 @@ function addBookToLibrary(){
     let author = prompt("Who is the author? ");
     let pages = prompt("How many pages are there?");
     myLibrary.push(new Book(title, author, pages, false));
+    const info = Object.values(myLibrary[myLibrary.length - 1]);
+    console.log(info);
 }
 
 
