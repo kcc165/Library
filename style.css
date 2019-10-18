@@ -2,3 +2,10 @@ html, body {
     display: block;
 }
 
+#submit-form {
+    display: none;
+}
+
+td {
+    text-align: center;
+}

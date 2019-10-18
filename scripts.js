@@ -15,6 +15,7 @@ class Book {
 }
 
 const myLibrary = [];
+const container = document.querySelector(".library-info");
 const bookTable = document.querySelector("#bookTable");
 const bookRow = document.createElement("tr");
 
@@ -32,7 +33,6 @@ function addBookToLibrary(){
     for (i = 0; i < info.length; i++){
         textnode = document.createTextNode(`${info[i]}`);
         dataCell = document.createElement("td");
-        dataCell.setAttribute("style", "text-align: center");
         dataCell.appendChild(textnode);
         bookRow.appendChild(dataCell);
     }
