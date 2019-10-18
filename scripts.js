@@ -15,10 +15,13 @@ class Book {
 }
 
 const myLibrary = [];
-const table = document.querySelector(".book-table");
+const bookTable = document.querySelector("#bookTable");
+const bookRow = document.createElement("tr");
+
+
 
 addBookToLibrary();
-console.log(myLibrary);
+
 
 function addBookToLibrary(){
     let title = prompt("What is the title? ")
@@ -26,7 +29,14 @@ function addBookToLibrary(){
     let pages = prompt("How many pages are there?");
     myLibrary.push(new Book(title, author, pages, false));
     const info = Object.values(myLibrary[myLibrary.length - 1]);
-    console.log(info);
+    for (i = 0; i < info.length; i++){
+        textnode = document.createTextNode(`${info[i]}`);
+        dataCell = document.createElement("td");
+        dataCell.setAttribute("style", "text-align: center");
+        dataCell.appendChild(textnode);
+        bookRow.appendChild(dataCell);
+    }
+    bookTable.appendChild(bookRow);
 }
 
 
