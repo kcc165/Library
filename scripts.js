@@ -18,9 +18,20 @@ const myLibrary = [];
 const container = document.querySelector(".library-info");
 const bookTable = document.querySelector("#bookTable");
 const bookRow = document.createElement("tr");
+const newBookButton = document.querySelector("#new-book");
+const submitForm = document.querySelector("#submit-form");
+const readStatusButton = document.createElement("button")
+readStatusButton.innerHTML = "Change Read Status"
 
+newBookButton.addEventListener("click", e => {
+    newBookButton.setAttribute("style", "display: none");
+    submitForm.setAttribute("style", "display: block");
 
+})
 
+readStatusButton.addEventListener("click", e => {
+    console.log(e);
+})
 addBookToLibrary();
 
 
@@ -36,7 +47,12 @@ function addBookToLibrary(){
         dataCell.appendChild(textnode);
         bookRow.appendChild(dataCell);
     }
+    dataCell = document.createElement("td");
+    dataCell.appendChild(readStatusButton);
+    bookRow.appendChild(dataCell);
     bookTable.appendChild(bookRow);
 }
+
+
 
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
     <title>Library</title>
 </head>
 <body>
@@ -19,19 +19,21 @@
             </tr>
         </table>
         <br>
-        <button id="add-book">Add Book</button>
+        <button id="new-book">New Book</button>
         <br>
         <div id="submit-form">
             <form>
                 <label for="title">Title: </label>
-                <input type="text" id="title">
+                <input type="text" id="title" required>
                 <label for="author">Author: </label>
-                <input type="text" id="author">
+                <input type="text" id="author" required>
                 <label for="pages">Number Of Pages: </label>
                 <input type="text" id="pages">
                 <label for="read-status">Read Status</label>
                 <input type="radio" id="read-status" name="read-status">Read
                 <input type="radio" id="read-status" name="read-status">Not Read
+                <input type="submit" id="bookAdd" value="Add Book">
+                <input type="button" id="clear" value="Clear">
             </form>
         </div>
     </div>
