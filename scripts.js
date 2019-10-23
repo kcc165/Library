@@ -15,13 +15,11 @@ class Book {
 }
 
 const myLibrary = [];
-const container = document.querySelector(".library-info");
 const bookTable = document.querySelector("#bookTable");
-const bookRow = document.createElement("tr");
 const newBookButton = document.querySelector("#new-book");
 const submitForm = document.querySelector("#submit-form");
-const readStatusButton = document.createElement("button")
-readStatusButton.innerHTML = "Change Read Status"
+const addBookButton = document.querySelector("#bookAdd");
+
 
 newBookButton.addEventListener("click", e => {
     newBookButton.setAttribute("style", "display: none");
@@ -29,17 +27,35 @@ newBookButton.addEventListener("click", e => {
 
 })
 
-readStatusButton.addEventListener("click", e => {
-    console.log(e);
+
+
+addBookButton.addEventListener("click", e => {
+    if (document.getElementById("title").value == "" || document.getElementById("author").value == "" || document.getElementById("pages").value == "" || 
+    document.getElementById("read").checked === false && document.getElementById("notRead").checked === false ){
+        alert("Please fill out all fields.")
+    }
+    else {
+        addBookToLibrary();
+    }
+
+
 })
-addBookToLibrary();
+
+
+
 
 
 function addBookToLibrary(){
-    let title = prompt("What is the title? ")
-    let author = prompt("Who is the author? ");
-    let pages = prompt("How many pages are there?");
-    myLibrary.push(new Book(title, author, pages, false));
+    const readStatusButton = document.createElement("button");
+    const removeBookButton = document.createElement("button");
+    readStatusButton.innerHTML = "Change Read Status";
+    removeBookButton.innerHTML = "Remove Book";
+    const bookRow = document.createElement("tr");
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let readStatus = document.getElementById("read").checked === false? "Not Read" : "Read"; 
+    myLibrary.push(new Book(title, author, pages, readStatus));
     const info = Object.values(myLibrary[myLibrary.length - 1]);
     for (i = 0; i < info.length; i++){
         textnode = document.createTextNode(`${info[i]}`);
@@ -49,8 +65,13 @@ function addBookToLibrary(){
     }
     dataCell = document.createElement("td");
     dataCell.appendChild(readStatusButton);
+    dataCell.appendChild(removeBookButton);
     bookRow.appendChild(dataCell);
     bookTable.appendChild(bookRow);
+}
+
+function addBookToTable(){
+    
 }
 
 
