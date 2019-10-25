@@ -21,6 +21,7 @@ const submitForm = document.querySelector("#submit-form");
 const addBookButton = document.querySelector("#bookAdd");
 
 
+
 newBookButton.addEventListener("click", e => {
     newBookButton.setAttribute("style", "display: none");
     submitForm.setAttribute("style", "display: block");
@@ -41,6 +42,12 @@ addBookButton.addEventListener("click", e => {
 
 })
 
+bookTable.addEventListener("click", e => {
+    console.log(e);
+})
+
+
+
 
 
 
@@ -49,7 +56,10 @@ function addBookToLibrary(){
     const readStatusButton = document.createElement("button");
     const removeBookButton = document.createElement("button");
     readStatusButton.innerHTML = "Change Read Status";
+    readStatusButton.classList.add("readStatusButton");
     removeBookButton.innerHTML = "Remove Book";
+    removeBookButton.classList.add("removeBookButton");
+    
     const bookRow = document.createElement("tr");
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
@@ -70,9 +80,7 @@ function addBookToLibrary(){
     bookTable.appendChild(bookRow);
 }
 
-function addBookToTable(){
-    
-}
+
 
 
 
