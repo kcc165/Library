@@ -50,7 +50,8 @@ bookTable.addEventListener("click", e => {
         e.path[2].children[3].innerHTML = changeReadStatus(e.path[2].children[3].innerHTML);
     }
     else if (e.target.innerHTML === "Remove Book"){
-        e.path[2].remove();
+        console.log(e);
+        //e.path[2].remove();
     }
 })
 
@@ -89,7 +90,7 @@ function addBookToLibrary(){
     dataCell.appendChild(readStatusButton);
     dataCell.appendChild(removeBookButton);
     bookRow.appendChild(dataCell);
-    bookTable.appendChild(bookRow);
+    bookTable.children[0].appendChild(bookRow);
 }
 
 function changeReadStatus(status){
