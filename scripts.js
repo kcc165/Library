@@ -19,6 +19,8 @@ const bookTable = document.querySelector("#bookTable");
 const newBookButton = document.querySelector("#new-book");
 const submitForm = document.querySelector("#submit-form");
 const addBookButton = document.querySelector("#bookAdd");
+const inputFields = document.querySelectorAll("input");
+const clearButton = document.querySelector("#clear");
 
 
 
@@ -37,13 +39,23 @@ addBookButton.addEventListener("click", e => {
     }
     else {
         addBookToLibrary();
+        clearForm();
     }
 
 
 })
 
 bookTable.addEventListener("click", e => {
-    console.log(e);
+    if (e.target.innerHTML === "Change Read Status"){
+        e.path[2].children[3].innerHTML = changeReadStatus(e.path[2].children[3].innerHTML);
+    }
+    else if (e.target.innerHTML === "Remove Book"){
+        e.path[2].remove();
+    }
+})
+
+clearButton.addEventListener("click", e => {
+    clearForm();
 })
 
 
@@ -56,9 +68,9 @@ function addBookToLibrary(){
     const readStatusButton = document.createElement("button");
     const removeBookButton = document.createElement("button");
     readStatusButton.innerHTML = "Change Read Status";
-    readStatusButton.classList.add("readStatusButton");
+    readStatusButton.classList.add("actionButtons");
     removeBookButton.innerHTML = "Remove Book";
-    removeBookButton.classList.add("removeBookButton");
+    removeBookButton.classList.add("actionButtons");
     
     const bookRow = document.createElement("tr");
     let title = document.getElementById("title").value;
@@ -78,6 +90,21 @@ function addBookToLibrary(){
     dataCell.appendChild(removeBookButton);
     bookRow.appendChild(dataCell);
     bookTable.appendChild(bookRow);
+}
+
+function changeReadStatus(status){
+    return status === "Read" ? "Not Read" : "Read";
+}
+
+function clearForm(){
+    inputFields.forEach(field => {
+        if (field.type === "text"){
+            field.value = "";
+        }
+        else if (field.type === "radio"){
+            field.checked = false;
+        }
+    });
 }
 
 
